@@ -1,32 +1,54 @@
-set nocompatible     "required
-filetype off         "required
+set nocompatible    "required
+filetype off        "required
 
-"set the runtime path to include Vundle and initialize
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"let Vundle mamage Vundle,required
+" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"Color schemes
-"Plugin 'tomasr/molokai'
-Plugin 'flazz/vim-colorschemes'
-
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/The-NERD-tree'
-Plugin 'vim-scripts/taglist.vim'
-"Plugin 'vim-scripts/OmniCppComplete'   "ç”¨clang-complete ä»£æ›¿
-Plugin 'vim-scripts/AutoComplPop'
-Plugin 'vim-scripts/AutoClose'
+" minibufexpl
 Plugin 'vim-scripts/minibufexpl.vim'
-Plugin 'vim-scripts/clang-complete'
+
+" Pydiction python²¹È«²å¼ş
+Plugin 'vim-scripts/Pydiction'
+
+" SnipMate
+Plugin 'vim-scripts/snipMate'
+
+" ÏÔÊ¾Ëõ½ø
+"Plugin 'vim-scripts/Indent-Guides'
+Plugin 'Yggdroot/indentLine'
+
+" youcompleteme
+"Plugin  'Valloric/YouCompleteMe'   "ÕæĞÄ²»ºÃÓÃ£¬¶øÇÒ»¹Âé·³ 
+"Plugin 'vim-scripts/clang-complete'
+Plugin 'vim-scripts/AutoComplPop'
+"Plugin 'Shougo/neocomplete.vim'
 Plugin 'vim-scripts/Syntastic'
-Plugin 'vim-scripts/headerGatesAdd.vim'
+"Plugin 'vim-scripts/SuperTab'
+
+" a.vim
+"Plugin 'vim-scripts/a.vim'   "²»¿É
+
+" autoclose
+"Plugin 'vim-scripts/AutoClose'
+
+"¶àĞĞ×¢ÊÍ
+Plugin 'vim-scripts/The-NERD-Commenter'
+
+" headerGatesAdd
+"Plugin 'vim-scripts/headerGatesAdd.vim'
+
+Plugin 'molokai' 
 
 
-"All of your Plugins must be add before the following line
-call vundle#end()    "required
-filetype plugin indent on   "required
+
+"All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " requiredcall vundle
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -34,102 +56,264 @@ filetype plugin indent on   "required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+"""" end of vundle
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim åŸºæœ¬é…ç½®
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a  "ä½¿ç”¨é¼ æ ‡
-set shiftwidth=4 "ä½¿ç”¨>> <<æ—¶,å®½åº¦ä¸º4
-set tabstop=4    "tabå®½åº¦ä¸º4
-set softtabstop=4   "è®¾ç½®æˆ4
-set history=500   "å†å²è®°å½•
-set backspace=indent,eol,start  "å…è®¸backspaceåˆ é™¤
-set confirm         "å¤„ç†æœªä¿å­˜æˆ–åªè¯»æ–‡ä»¶æ—¶,å¼¹å‡ºç¡®è®¤
+
+"""""""""""""""""""""""
+"»ù±¾ÅäÖÃ
+"""""""""""""""""""""""
+" macbookproÏÂÃ» backspace,Ê¹ÓÃdeleteÉ¾³ı
+fixdel
+
+syntax enable
+syntax on         "Óï·¨¸ßÁÁ,¹Ø¼ü×Ö¸ßÁÁ
+
+" ½â¾öÓĞÊ±ÂÒÂëÎÊÌâ
+set fileencoding=gb18030
+set fileencodings=utf-8,gb18030,utf-16,big5
+
+"ÉèÖÃµ±Ç°ÎÄ¼şÂ·¾¶ÎªvimµÄÂ·¾¶
+set autochdir
+
+set number        "ÏÔÊ¾ĞĞºÅ
+set mouse=a       "Ê¹ÓÃÊó±ê
+
+" Ê¹ÓÃ>> << Ê±µÄ¿í¶ÈÎª4
+set shiftwidth=4
+
+" tabµÄ¿í¶ÈÉèÖÃ³É4
+set tabstop=4  
+
+" backspace¿ÉÒÔÖ±½ÓÉ¾³ı4¸ö¿Õ¸ñ
+set softtabstop=4
+set expandtab
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+"¶ÔÆëÏà¹Ø
+set autoindent
+set smartindent
+set cindent
+
+" ÃüÁîĞĞÏÔÊ¾ÊäÈëµÄÃüÁî
+set showcmd
+" ÃüÁîĞĞÏÔÊ¾vimµ±Ç°Ä£Ê½
+set showmode
+
+set cursorline
+
+set history=500
+
+"½ûÖ¹Éú³É±¸·İºÍÁÙÊ±ÎÄ¼ş
+set nobackup
+set noswapfile
+
+"µ±ÎÄ¼ş±»¸Ä¶¯Ê±×Ô¶¯ÔØÈë
+set autoread
+
+"×Ô¶¯±£´æ
+set autowrite
+
+"ÆôÓÃÕÛµş,ÊÖ¶¯ÕÛµş
+set foldenable
+set foldmethod=manual
+
+"È¥µô´íÎóÊ±µÄÉùÒô
+set noeb
+
+"¸ßÁÁËÑË÷
+set hlsearch incsearch
+
+"ËÑË÷Ê±´óĞ¡Ğ´²»Ãô¸Ğ
+set ignorecase
+
+"ÔÚ´¦ÀíÎ´±£´æ»òÖ»¶ÁÎÄ¼şµÄÊ±ºò£¬µ¯³öÈ·ÈÏ"
+set confirm
+
+"ÏÔÊ¾×´Ì¬À¸
 set ruler
 set laststatus=2
 
-set hlsearch incsearch    "é«˜äº®æœç´¢å’Œå¢é‡æœç´¢
-set ignorecase            "æœç´¢æ—¶å¿½ç•¥å¤§å°å†™
+"ÉèÖÃ×ÖÌå
+set guifont=Monaco:h14
 
-syntax enable             "è¯­æ³•é«˜äº®
-syntax on                 "å…³é”®å­—é«˜äº®
-set number                "æ˜¾ç¤ºè¡Œå·
-set cursorline cursorcolumn     "æ˜¾ç¤ºå½“å‰è¡Œå’Œåˆ—
-set showmode              "æ˜¾ç¤ºvimå½“å‰æ¨¡å¼
-set showcmd               "æ˜¾ç¤ºå½“å‰çš„å‘½ä»¤
-set autoindent smartindent  "è‡ªåŠ¨ç¼©è¿› æ™ºèƒ½ç¼©è¿›
-set cindent               "Cæ ·å¼ç¼©è¿›
+"Set mapleader
+let mapleader=","
 
-set autoread    
-set autowrite
-set clipboard+=unnamed
+"Fast reloading of the .vimrc
+map <silent> <leader>ss :source ~/.vimrc<CR>
+""Fast editing of .vimrc
+map <silent> <leader>ee :e ~/.vimrc<CR>
+"When .vimrc is edited,reload it
+autocmd! bufwritepost .vimrc source ~/.vimrc"
 
-set nowritebackup
-set nobackup
+" buffer Ïà¹Ø²Ù×÷
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
 
+"½«Ñ¡ÖĞÎÄ±¾¿é¸´ÖÆµ½ÏµÍ³¼ôÌù°å
+vnoremap <leader>y "+y
 
-let mapleader=","     "é…ç½®mapleader
-let g:mapleader=","   "å…¨å±€leader
-           
-"bufferç›¸å…³æ“ä½œ
-nnoremap <silent> [b :bprevious<CR>  "å‰ä¸€ä¸ªbuffer
-nnoremap <silent> ]b :bnext<CR>      "åä¸€ä¸ªbuffer
-
-" è¦æ±‚vimæ‰“å¼€
-vnoremap <leader>y "+y  "å°†é€‰ä¸­æ–‡æœ¬å¤åˆ¶åˆ°ç³»ç»Ÿå‰ªè´´æ¿
-nmap <leader>p "+p      "å°†ç³»ç»Ÿå‰ªè´´æ¿å†…å®¹ç²˜è´´åˆ°vim
-
-set hidden  "å…è®¸Ctrl+] è·³è½¬çš„æ—¶å€™,bufferä¸å¿…ä¿å­˜
-
-map <silent> <leader>ss :source ~/.vimrc<CR> "é‡æ–°åŠ è½½~/.vimrc
-map <silent> <leader>ee :e ~/.vimrc<CR>      "å¿«é€Ÿç¼–è¾‘
-autocmd! bufwritepost .vimrc source ~/.vimrc "å½“.vimrcä¿å­˜æ—¶,é‡æ–°åŠ è½½
+"½«ÏµÍ³¼ôÌù°åÄÚÈİÕ³Ìùµ½vim
+nmap <leader>p "+p"
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"F2æ‰“å¼€/å…³é—­NERDTreeçª—å£
-nnoremap <F2>   :NERDTreeToggle<CR>
-let NERDTreeWinSize=30
+""""""""""""""""""""""""""""""""""""""""""""""
+" colorscheme
+""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme darkblue
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Taglist
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"F3æ‰“å¼€/å…³é—­ Taglist çª—å£
-nnoremap <F3>   :TlistToggle<CR>
-let Tlist_Show_One_File=1  "åªæ˜¾ç¤ºå½“å‰æ–‡ä»¶çš„tags
-let Tlist_WinWidth=30      "è®¾ç½®tagListçš„å®½åº¦
-let Tlist_Exit_OnlyWindow=1 "taglistçª—å£æ˜¯æœ€åä¸€ä¸ªçª—å£æ—¶é€€å‡º
-let Tlist_Use_Right_Window=1 "åœ¨å³è¾¹æ˜¾ç¤º
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OmniCppComplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"è®¾ç½®tagsçš„ä½ç½®
-"set tags+=~/.vim/cpp
-"build recursively a ctags database from the current directory
-"map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-"let OmniCpp_DisplayMode=1   "æ˜¾ç¤ºç±»é‡Œé¢æ‰€æœ‰æˆå‘˜
-"let OmniCpp_NamespaceSearch = 1
-"let OmniCpp_GlobalScopeSearch = 1
-"let OmniCpp_ShowAccess = 1 
-"let OmniCpp_ShowPrototypeInAbbr = 1 " æ˜¾ç¤ºå‡½æ•°å‚æ•°åˆ—è¡¨ 
-"let OmniCpp_MayCompleteDot = 1   " è¾“å…¥ .  åè‡ªåŠ¨è¡¥å…¨
-"let OmniCpp_MayCompleteArrow = 1 " è¾“å…¥ -> åè‡ªåŠ¨è¡¥å…¨ 
-"let OmniCpp_MayCompleteScope = 1 " è¾“å…¥ :: åè‡ªåŠ¨è¡¥å…¨ 
-"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-"" è‡ªåŠ¨å…³é—­è¡¥å…¨çª—å£ 
-"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif 
-"set completeopt=menuone,menu,longest
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
 " minibufexpl
-" """""""""""""""""""""""""""""""""""""""""""""""""""""
-"<C-TAB> <C-S-TAB>åˆ‡æ¢buffer
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplMapWindowNavVim=1  "Ctrl+hjklåˆ‡æ¢çª—å£
-let g:miniBufExplMapWindowNavArrows=1  "Ctrl+ç®­å¤´åˆ‡æ¢çª—å£
-let g:miniBufExplUseSingleClick=1      "å•å‡»é¼ æ ‡åˆ‡æ¢çª—å£
+" """""""""""""""""""""""""""""""""""""""""""""
+let g:miniBufExplUseSingleClick=1   " µ¥»÷ÇĞ»» 
+let g:miniBufExplMapWindowNavVim=1  "Ê¹ÓÃ ctrl+hjklÇĞ»»´°¿Ú
+let g:miniBufExplMapWindowNavArrows=1   "Ê¹ÓÃ ctrl+·½Ïò¼ıÇĞ»»´°¿Ú
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+""""""""""""""""""""""""""""""""""""""""""""""
+" :SyntasticInfo ²é¿´Ïà¹ØĞÅÏ¢
+" :SyntasticToggleMode ¿ª¹Ø
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Pydiction 
+""""""""""""""""""""""""""""""""""""""""""""""
+"TAB ÏÔÊ¾ÌáÊ¾
+"<Space>              -- Accept current match and insert a space.
+"CTRL-Y               -- Accept current match and and don't insert a space.
+"<Enter>              -- Accept current match and insert a newline.
+"<ESC> or CTRL-E      -- Close the menu and do not accept any match.
+ 
+let g:pydiction_location = '/Users/dai/.vim/bundle/Pydiction/complete-dict'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplete
+"""""""""""""""""""""""""""""""""""""""""""""""
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ 'default' : '',
+"    \ 'vimshell' : $HOME.'/.vimshell_hist',
+"    \ 'scheme' : $HOME.'/.gosh_completions'
+"        \ }
+
+" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+"inoremap <expr><C-g>     neocomplete#undo_completion()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"endfunction
+" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplete#close_popup()
+"inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+""""""""""""""""""""""""""""""""""""""""""
+"SuperTab
+""""""""""""""""""""""""""""""""""""""""""
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"  "Ä¬ÈÏÎª<C-p>
+
+""""""""""""""""""""""""""""""""""""""""""
+" clang_complete
+" """"""""""""""""""""""""""""""""""""""""
+"let g:clang_complete_copen=1
+"let g:clang_periodic_quickfix=1
+"let g:clang_snippets=1
+"let g:clang_close_preview=1
+
+
+""""""""""""""""""""""""""""""""""""""""""
+" syntastic
+" """"""""""""""""""""""""""""""""""""""""
+"let g:syntastic_check_on_open=1
+"let g:syntastic_enable_signs=1
+"let g:syntastic_cpp_include_dirs = ['/usr/include/c++/4.2.1', '/usr/local/Cellar/sdl2/2.0.3/include/SDL2','/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers','/System/Library/Frameworks/GLUT.framework/Versions/A/Headers']
+"let g:syntastic_cpp_check_header=1
+"let g:syntastic_cpp_remove_include_errors=1
+
+" C++µÄ±àÒëºÍÔËĞĞ
+"map <F5> :call CompileRunGpp()<CR>
+"func! CompileRunGpp()
+"  exec "w"
+"  exec "!g++ -Wall -g % -o %<"
+"  exec "! ./%<"
+"endfunc
+
