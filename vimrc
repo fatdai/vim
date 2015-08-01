@@ -10,27 +10,33 @@ Plugin 'gmarik/Vundle.vim'
 
 " minibufexpl
 Plugin 'vim-scripts/minibufexpl.vim'
+""Plugin 'vim-scripts/The-NERD-tree'
 
 " Pydiction python补全插件
-Plugin 'vim-scripts/Pydiction'
+""Plugin 'vim-scripts/Pydiction'
+""Plugin 'vim-scripts/python.vim'
 
 " SnipMate
-Plugin 'vim-scripts/snipMate'
+""Plugin 'vim-scripts/snipMate'
+
+" Python 提示插件
+""Plugin 'davidhalter/jedi-vim'
 
 " 显示缩进
 "Plugin 'vim-scripts/Indent-Guides'
 Plugin 'Yggdroot/indentLine'
 
+"二者只需要使用一个就可以了
 Plugin 'vim-scripts/AutoComplPop'
-"Plugin 'Shougo/neocomplete.vim'
-Plugin 'vim-scripts/Syntastic'
+""Plugin 'Shougo/neocomplete.vim'
+""Plugin 'vim-scripts/Syntastic'
 "Plugin 'vim-scripts/SuperTab'
 
 " a.vim
 "Plugin 'vim-scripts/a.vim'   "不可
 
 "多行注释
-Plugin 'vim-scripts/The-NERD-Commenter'
+"Plugin 'vim-scripts/The-NERD-Commenter'
 
 Plugin 'molokai' 
 
@@ -84,8 +90,8 @@ set backspace=indent,eol,start
 
 "对齐相关
 set autoindent
-set smartindent
-set cindent
+""set smartindent
+""set cindent
 
 " 命令行显示输入的命令
 set showcmd
@@ -129,6 +135,8 @@ set laststatus=2
 "设置字体
 set guifont=Monaco:h14
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  为了更加方便使用的配置
 "Set mapleader
 let mapleader=","
 
@@ -174,14 +182,14 @@ let g:miniBufExplMapWindowNavArrows=1   "使用 ctrl+方向箭切换窗口
 """"""""""""""""""""""""""""""""""""""""""""""
 " :SyntasticInfo 查看相关信息
 " :SyntasticToggleMode 开关
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+""let g:syntastic_always_populate_loc_list = 1
+""let g:syntastic_auto_loc_list = 1
+""let g:syntastic_check_on_open = 0
+""let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Pydiction 
@@ -192,7 +200,7 @@ let g:syntastic_check_on_wq = 0
 "<Enter>              -- Accept current match and insert a newline.
 "<ESC> or CTRL-E      -- Close the menu and do not accept any match.
  
-let g:pydiction_location = '/Users/dai/.vim/bundle/Pydiction/complete-dict'
+""let g:pydiction_location = '/Users/dai/.vim/bundle/Pydiction/complete-dict'
 
 """"""""""""""""""""""""""""""""""""""""""
 "SuperTab
@@ -200,3 +208,21 @@ let g:pydiction_location = '/Users/dai/.vim/bundle/Pydiction/complete-dict'
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"  "默认为<C-p>
 
 
+"""""""""""""""""""""""""""""""""""""""""""
+" 创建python文件时自动加上
+""autocmd! BufNewFile *.py exec ":call AddPythonHead()"
+
+""function! AddPythonHead()
+""    call setline(1,"#! /usr/bin/python")
+""    call append(1,"# -*- coding:utf-8 -*-")
+""endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""
+" jedi插件
+""let g:jedi#goto_assignments_command = "<leader>g"
+""let g:jedi#goto_definitions_command = "<leader>d"
+""let g:jedi#documentation_command = "K"
+""let g:jedi#usages_command = "<leader>n"
+""let g:jedi#completions_command = "<C-/>"
+""let g:jedi#rename_command = "<leader>r"
